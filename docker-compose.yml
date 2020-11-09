@@ -1,0 +1,58 @@
+version: '3.5'
+
+secrets:
+  database_username:
+    file: secrets/database_username
+  database_password:
+    file: secrets/database_password
+
+services:
+  server:
+    build: server/
+    ports:
+      - '${SERVER_PORT}:${SERVER_PORT}'
+    environment:
+      - SERVER_PORT
+      - API_DOMAIN
+      - API_HOSTNAME
+      - API_PORT
+    depends_on:
+      - api
+    restart: unless-stopped
+  api:
+    build: api/
+    hostname: ${API_HOSTNAME}
+    expose:
+      - '${API_PORT}'
+    environment:
+      - API_VERSION
+      - API_PRODUCTION
+      - API_PORT
+      - API_AUTHENTICATION_URL
+      - DATABASE_HOSTNAME
+      - DATABASE_PORT
+    secrets:
+      - database_username
+      - database_password
+    depends_on:
+      - database
+    restart: unless-stopped
+  database:
+    image: mongo:4.2.6
+    hostname: ${DATABASE_HOSTNAME}
+    expose:
+      - '${DATABASE_PORT}'
+    environment:
+      - MONGO_INITDB_DATABASE=db
+      - MONGO_INITDB_ROOT_USERNAME_FILE=/run/secrets/database_username
+      - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/database_password
+    secrets:
+      - database_username
+      - database_password
+    volumes:
+      - database:/data/db/
+    command: 'mongod --port ${DATABASE_PORT}'
+    restart: unless-stopped
+
+volumes:
+  database:
