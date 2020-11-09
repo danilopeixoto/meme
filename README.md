@@ -1,6 +1,6 @@
 # Meme
 
-A meme descriptor.
+A meme service.
 
 ## Prerequisites
 
