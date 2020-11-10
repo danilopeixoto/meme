@@ -4,7 +4,7 @@ import Meme from '../models/Meme'
 
 class MemeController {
   async create(request: Request, response: Response) {
-    console.log('Controlador de meme executando rota POST.')
+    console.log('Meme controller running POST method: create.')
 
     const body = await Meme.create(request.body)
 
@@ -12,7 +12,7 @@ class MemeController {
   }
 
   async update(request: Request, response: Response) {
-    console.log('Controlador de meme executando rota PATCH.')
+    console.log('Meme controller running PATCH method: update.')
 
     const { id } = request.params
     const body = await Meme.findByIdAndUpdate(id, request.body, { new: true })
@@ -21,7 +21,7 @@ class MemeController {
   }
 
   async search(request: Request, response: Response) {
-    console.log('Controlador de meme executando rota GET.')
+    console.log('Meme controller running GET method: search.')
 
     const { id } = request.query
     const body = id ? await Meme.findById(id) : await Meme.find()
@@ -30,7 +30,7 @@ class MemeController {
   }
 
   async remove(request: Request, response: Response) {
-    console.log('Controlador de meme executando rota DELETE.')
+    console.log('Meme controller running DELETE method: remove.')
 
     const { id } = request.params
 

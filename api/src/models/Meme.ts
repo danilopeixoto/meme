@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose'
 
-import database from '../services/database'
+import config from '../config'
 
 const MemeSchema = new Schema(
   {
@@ -13,4 +13,4 @@ const MemeSchema = new Schema(
   }
 )
 
-export default model('Meme', MemeSchema, database.collection_name)
+export default model('Meme', MemeSchema, config.database_collection)

@@ -6,9 +6,9 @@
   "scripts": {
     "format": "prettier-eslint \"src/**/*.ts\"",
     "fix": "prettier-eslint --write \"src/**/*.ts\"",
-    "start": "yarn build && node ./dist/server.js",
-    "start-dev": "ts-node ./src/server.ts",
-    "debug": "ts-node-dev ./src/server.ts",
+    "start": "yarn build && node dist/server.js",
+    "start-dev": "ts-node src/server.ts",
+    "debug": "ts-node-dev src/server.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

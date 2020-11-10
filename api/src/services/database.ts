@@ -1,13 +1,11 @@
-const url = process.env.API_DATABASE_URL
+import config from '../config'
 
-const config = {
+const database = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false,
-  dbName: process.env.API_DATABASE_NAME
+  dbName: config.database_name
 }
 
-const collection_name = process.env.API_DATABASE_COLLECTION_NAME
-
-export default { url, config, collection_name }
+export default database

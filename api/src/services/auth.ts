@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+import config from '../config'
+
 const api = axios.create({
-  baseURL: process.env.API_AUTHENTICATION_URL,
+  baseURL: config.authentication_url,
   timeout: 1000
 })
 
