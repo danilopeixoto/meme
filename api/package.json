@@ -7,8 +7,7 @@
     "format": "prettier-eslint \"src/**/*.ts\"",
     "fix": "prettier-eslint --write \"src/**/*.ts\"",
     "start": "yarn build && node dist/server.js",
-    "start-dev": "ts-node src/server.ts",
-    "debug": "ts-node-dev src/server.ts",
+    "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +15,6 @@
   "author": "Danilo Peixoto and Willer Silva",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@types/restify": "^8.4.2",
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
     "mongoose": "^5.10.13",
@@ -25,6 +23,7 @@
   },
   "devDependencies": {
     "@types/mongoose": "^5.7.37",
+    "@types/restify": "^8.4.2",
     "prettier-eslint-cli": "^5.0.0",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0",
