@@ -7,6 +7,6 @@ LABEL maintainer "Danilo Peixoto and Willer Silva"
 WORKDIR /usr/src/api/
 COPY . .
 
-RUN npm install
+RUN yarn install
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
