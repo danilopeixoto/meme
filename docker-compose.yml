@@ -21,8 +21,20 @@ services:
     environment:
       - API_PORT
       - API_VERSION
-      - API_AUTHENTICATION_URL
-      - API_DATABASE_URL
-      - API_DATABASE_NAME
-      - API_DATABASE_COLLECTION
+      - API_CORE_URL
+    depends_on:
+      - core
+    restart: unless-stopped
+  core:
+    build: core/
+    hostname: ${CORE_HOSTNAME}
+    expose:
+      - '${CORE_PORT}'
+    environment:
+      - CORE_PORT
+      - CORE_VERSION
+      - CORE_AUTHENTICATION_URL
+      - CORE_DATABASE_URL
+      - CORE_DATABASE_NAME
+      - CORE_DATABASE_COLLECTION
     restart: unless-stopped

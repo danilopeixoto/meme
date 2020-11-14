@@ -15,7 +15,7 @@ class AuthController {
         return response.json(error.response.status, error.response.data)
       } else {
         return response.json(500, {
-          msg: `Falha ao acessar serviço de autenticação.`
+          msg: 'Falha ao acessar serviço de autenticação.'
         })
       }
     }
@@ -39,7 +39,7 @@ class AuthController {
         return response.json(error.response.status, error.response.data)
       } else {
         return response.json(500, {
-          msg: `Falha ao acessar serviço de autenticação.`
+          msg: 'Falha ao acessar serviço de autenticação.'
         })
       }
     }

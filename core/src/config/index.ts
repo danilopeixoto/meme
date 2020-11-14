@@ -10,9 +10,12 @@ for (const variable in parsed_config) {
 }
 
 const config = {
-  port: process.env.API_PORT,
-  version: process.env.API_VERSION,
-  core_url: process.env.API_CORE_URL
+  port: process.env.CORE_PORT,
+  version: process.env.CORE_VERSION,
+  authentication_url: process.env.CORE_AUTHENTICATION_URL,
+  database_url: process.env.CORE_DATABASE_URL,
+  database_name: process.env.CORE_DATABASE_NAME,
+  database_collection: process.env.CORE_DATABASE_COLLECTION
 }
 
 export default config
