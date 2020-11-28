@@ -10,6 +10,8 @@ services:
       - API_HOSTNAME
       - API_PORT
       - API_DOMAIN
+    networks:
+      - meme
     depends_on:
       - api
     restart: unless-stopped
@@ -22,6 +24,8 @@ services:
       - API_PORT
       - API_VERSION
       - API_CORE_URL
+    networks:
+      - meme
     depends_on:
       - core
     restart: unless-stopped
@@ -37,4 +41,9 @@ services:
       - CORE_DATABASE_URL
       - CORE_DATABASE_NAME
       - CORE_DATABASE_COLLECTION
+    networks:
+      - meme
     restart: unless-stopped
+
+networks:
+  meme:
