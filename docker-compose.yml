@@ -20,7 +20,6 @@ services:
     restart: unless-stopped
   api:
     build: api/
-    hostname: ${API_HOSTNAME}
     expose:
       - '${API_PORT}'
     environment:
@@ -28,13 +27,14 @@ services:
       - API_VERSION
       - API_CORE_URL
     networks:
-      - meme
+      meme:
+        aliases:
+          - ${API_HOSTNAME}
     depends_on:
       - core
     restart: unless-stopped
   core:
     build: core/
-    hostname: ${CORE_HOSTNAME}
     expose:
       - '${CORE_PORT}'
     environment:
@@ -45,7 +45,9 @@ services:
       - CORE_DATABASE_NAME
       - CORE_DATABASE_COLLECTION
     networks:
-      - meme
+      meme:
+        aliases:
+          - ${CORE_HOSTNAME}
     restart: unless-stopped
 
 networks:
