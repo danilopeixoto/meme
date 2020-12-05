@@ -15,6 +15,12 @@ Build and run services:
 docker-compose up -d
 ```
 
+Scale services:
+
+```
+docker-compose scale api=<replicas> core=<replicas>
+```
+
 ## Copyright and license
 
 Copyright (c) 2020, Danilo Peixoto and Willer Silva. All rights reserved.
