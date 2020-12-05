@@ -17,12 +17,11 @@
   "dependencies": {
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.10.13",
+    "mongoose": "^5.11.1",
     "restify": "^8.5.1",
     "restify-router": "^0.6.2"
   },
   "devDependencies": {
-    "@types/mongoose": "^5.7.37",
     "@types/restify": "^8.4.2",
     "prettier-eslint-cli": "^5.0.0",
     "ts-node-dev": "^1.0.0",
