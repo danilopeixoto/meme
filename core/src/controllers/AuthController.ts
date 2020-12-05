@@ -27,7 +27,7 @@ class AuthController {
     const token = request.headers.token || ''
 
     try {
-      const serviceResponse = await auth.post(
+      await auth.post(
         'validateToken',
         {},
         { headers: { token } }
