@@ -27,11 +27,7 @@ class AuthController {
     const token = request.headers.token || ''
 
     try {
-      await auth.post(
-        'validateToken',
-        {},
-        { headers: { token } }
-      )
+      await auth.post('validateToken', {}, { headers: { token } })
 
       next()
     } catch (error) {

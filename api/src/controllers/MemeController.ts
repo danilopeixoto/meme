@@ -49,18 +49,39 @@ class MemeController {
     }
   }
 
-  async search(request: Request, response: Response) {
-    console.log('Meme controller running GET method: search.')
-
-    const id = request.query.id
-    const params = id ? { id } : {}
+  async list(request: Request, response: Response) {
+    console.log('Meme controller running GET method: list.')
 
     const token = request.headers.token
     const headers = token ? { token } : {}
 
     try {
       const serviceResponse = await core.get('meme', {
-        params,
+        headers
+      })
+
+      return response.json(serviceResponse.status, serviceResponse.data)
+    } catch (error) {
+      if (error.response) {
+        return response.json(error.response.status, error.response.data)
+      } else {
+        return response.json(500, {
+          msg: 'Falha ao acessar serviço de memes.'
+        })
+      }
+    }
+  }
+
+  async find(request: Request, response: Response) {
+    console.log('Meme controller running GET method: find.')
+
+    const id = request.params.id || ''
+
+    const token = request.headers.token
+    const headers = token ? { token } : {}
+
+    try {
+      const serviceResponse = await core.get(`meme/${id}`, {
         headers
       })
 

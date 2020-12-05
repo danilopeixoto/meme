@@ -12,7 +12,8 @@ routes.post('/auth/login', authController.login)
 
 routes.post('/meme', authController.validateToken, memeController.create)
 routes.patch('/meme/:id', authController.validateToken, memeController.update)
-routes.get('/meme', authController.validateToken, memeController.search)
+routes.get('/meme', authController.validateToken, memeController.list)
+routes.get('/meme/:id', authController.validateToken, memeController.find)
 routes.del('/meme/:id', authController.validateToken, memeController.remove)
 
 export default routes

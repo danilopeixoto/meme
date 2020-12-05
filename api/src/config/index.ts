@@ -3,10 +3,10 @@ import fs from 'fs'
 import * as dotenv from 'dotenv'
 
 const file = fs.readFileSync(path.join(__dirname, '../../.env'))
-const parsed_config = dotenv.parse(file)
+const parsedConfiguration = dotenv.parse(file)
 
-for (const variable in parsed_config) {
-  process.env[variable] = process.env[variable] || parsed_config[variable]
+for (const variable in parsedConfiguration) {
+  process.env[variable] = process.env[variable] || parsedConfiguration[variable]
 }
 
 const config = {

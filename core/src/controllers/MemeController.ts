@@ -33,13 +33,27 @@ class MemeController {
     }
   }
 
-  async search(request: Request, response: Response) {
-    console.log('Meme controller running GET method: search.')
-
-    const { id } = request.query
+  async list(request: Request, response: Response) {
+    console.log('Meme controller running GET method: list.')
 
     try {
-      const body = id ? await Meme.findById(id) : await Meme.find()
+      const body = await Meme.find()
+
+      return response.json(200, body)
+    } catch (error) {
+      return response.json(500, {
+        msg: 'Falha ao acessar recurso no banco de dados.'
+      })
+    }
+  }
+
+  async find(request: Request, response: Response) {
+    console.log('Meme controller running GET method: find.')
+
+    const { id } = request.params
+
+    try {
+      const body = await Meme.findById(id)
 
       return response.json(200, body)
     } catch (error) {
