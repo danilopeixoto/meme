@@ -25,6 +25,12 @@ class MemeController {
     try {
       const body = await Meme.findByIdAndUpdate(id, request.body, { new: true })
 
+      if (body === null) {
+        return response.json(404, {
+          msg: 'Recurso não encontrado.'
+        })
+      }
+
       return response.json(200, body)
     } catch (error) {
       return response.json(500, {
@@ -55,6 +61,12 @@ class MemeController {
     try {
       const body = await Meme.findById(id)
 
+      if (body === null) {
+        return response.json(404, {
+          msg: 'Recurso não encontrado.'
+        })
+      }
+
       return response.json(200, body)
     } catch (error) {
       return response.json(500, {
@@ -69,9 +81,17 @@ class MemeController {
     const { id } = request.params
 
     try {
+      const document = await Meme.findByIdAndDelete(id)
+
+      if (document === null) {
+        return response.json(404, {
+          msg: 'Recurso não encontrado.'
+        })
+      }
+
       const body = {
         id,
-        excluido: await Meme.findByIdAndDelete(id)
+        excluido: document
       }
 
       return response.json(200, body)
